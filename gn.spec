@@ -2,13 +2,14 @@
 
 Name:           gn
 Version:        1.0.0
-Release:        1
+Release:        2
 Summary:        Meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/gn
 Source0:        %{url}/+archive/gn-%{commit}.tar.gz
 Source1:        last_commit_position.h
-Patch0:         gn-always-python3.patch
+Patch0000:      gn-always-python3.patch
+Patch0001:      add_safe_compilation_options.patch
 
 BuildRequires:  python3-devel ninja-build gcc-c++ clang emacs-common help2man
 
@@ -71,10 +72,11 @@ find '%{buildroot}%{_datadir}/vim/vimfiles' \
 install -t '%{buildroot}%{_emacs_sitestartdir}' -D -p -m 0644 misc/emacs/*.el
 
 install -t '%{buildroot}%{_mandir}/man1' -D -m 0644 -p out/gn.1
-rm -rf %{buildroot}%{_datadir}/vim/vimfiles/__pycache__
+
 
 %check
 out/gn_unittests
+rm -rf %{buildroot}%{_datadir}/vim/vimfiles/__pycache__
 
 
 %files
@@ -100,5 +102,8 @@ out/gn_unittests
 
 
 %changelog
+* Tue Mar 07 2023 xuchongyu <xuchongyu@huawei.com> 1.0.0-2
+- Add safe compilation options
+
 * Tue Nov 29 2022 xuchongyu <xuchongyu@huawei.com> 1.0.0-1
 - init
