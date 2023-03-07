@@ -1,0 +1,18 @@
+From: "xuchogyu" <xuchongyu@huawei.com>
+Date: Tue, 7 Mar 2023 09:52:37 +0800
+Subject: [PATCH] Add safe compilation option -fPIE for GN
+
+---
+diff -Nur a/build/gen.py b/build/gen.py 
+--- a/build/gen.py      2022-11-25 10:58:41.000000000 +0800
++++ b/build/gen.py      2023-03-06 09:49:35.648580670 +0800
+@@ -371,7 +371,8 @@
+         '-Wall',
+         '-Wextra',
+         '-Wno-unused-parameter',
+-        '-std=c++17'
++        '-std=c++17',
++        '-fPIE'
+     ])
+ 
+     if platform.is_linux() or platform.is_mingw() or platform.is_msys():
