@@ -1,8 +1,11 @@
+%ifarch riscv64
+%global _debugsource_template %{nil}
+%endif
 %global commit e1ac69b17da0c6d4f5e34e686690ff70c6a43e6f
 
 Name:           gn
 Version:        1.0.0
-Release:        2
+Release:        3
 Summary:        Meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/gn
@@ -10,6 +13,7 @@ Source0:        %{url}/+archive/gn-%{commit}.tar.gz
 Source1:        last_commit_position.h
 Patch0000:      gn-always-python3.patch
 Patch0001:      add_safe_compilation_options.patch
+Patch1000:      add-risc-v-and-loongarch-support.patch
 
 BuildRequires:  python3-devel ninja-build gcc-c++ clang emacs-common help2man
 
@@ -102,6 +106,9 @@ rm -rf %{buildroot}%{_datadir}/vim/vimfiles/__pycache__
 
 
 %changelog
+* Mon Mar 13 2023 misaka00251 <liuxin@iscas.ac.cn> - 1.0.0-3
+- Add risc-v and loongarch support
+
 * Tue Mar 07 2023 xuchongyu <xuchongyu@huawei.com> 1.0.0-2
 - Add safe compilation options
 
