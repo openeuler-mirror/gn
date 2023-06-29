@@ -2,13 +2,14 @@
 
 Name:           gn
 Version:        1.0.0
-Release:        1
+Release:        2
 Summary:        Meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/gn
 Source0:        %{url}/+archive/gn-%{commit}.tar.gz
 Source1:        last_commit_position.h
 Patch0:         gn-always-python3.patch
+patch2:         add-riscv-support.patch
 
 BuildRequires:  python3-devel ninja-build gcc-c++ clang emacs-common help2man
 
@@ -100,5 +101,8 @@ out/gn_unittests
 
 
 %changelog
+* Mon Jun 12 2023 zhangxiang <zhangxiang@iscas.ac.cn> 1.0.0-2
+- Add riscv support
+
 * Tue Nov 29 2022 xuchongyu <xuchongyu@huawei.com> 1.0.0-1
 - init
